@@ -22,10 +22,10 @@ public class Executed extends MyMenu{
     public void execute(int choice) {
         switch (choice) {
             case 1:
-                int num = Validate.getInt(">Enter number of process");
+                int num = Validate.getInt(">Enter number of process: ");
                 for(int i = 0; i < num; i++){
                     System.out.println("-Process " +i+": ");
-                    String nodeName = Validate.getString(">Enter name of process: ");
+                    String nodeName = Validate.getString(">Enter name of process: ").toUpperCase();
                     int data = Validate.getInt(">>Enter executed time: ");
                     link.insert(data, nodeName);
                 }
