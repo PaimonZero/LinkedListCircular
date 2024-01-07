@@ -16,7 +16,7 @@ class CircularLinkedList {
         return (head == null);
     }
 
-    public void insert(int data, String name) {
+    public void insert(double data, String name) {
         Node newNode = new Node(data, name);
         if (head == null) {
             head = newNode;

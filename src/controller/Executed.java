@@ -26,7 +26,7 @@ public class Executed extends MyMenu{
                     System.out.println("-Process " +i+": ");
                     String nodeName = Validate.getString(">Enter name of process: ").toUpperCase();
                     double data = Validate.getDouble(">>Enter executed time: ");
-                    link.insert((int) data, nodeName);
+                    link.insert(data, nodeName);
                 }
                 System.out.println("------------------------------------");
                 System.out.print("New list: ");
