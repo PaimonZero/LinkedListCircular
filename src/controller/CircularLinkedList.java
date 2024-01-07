@@ -1,10 +1,12 @@
 package controller;
 
+import java.text.*;
 import model.Node;
 
 class CircularLinkedList {
+    private DecimalFormat decFor = new DecimalFormat("#.00");
     private Node head;
-
+    
     // Example constructor
     public CircularLinkedList() {
         this.head = null;
@@ -29,7 +31,7 @@ class CircularLinkedList {
         }
     }
 
-    public void roundRobin(int timeQuantum) {
+    public void roundRobin(double timeQuantum) {
         if (head == null) {
             System.out.println("Empty List!");
             return;
@@ -39,7 +41,7 @@ class CircularLinkedList {
         do {
             if (current.getData() > timeQuantum) {
                 current.setData(current.getData() - timeQuantum);
-                System.out.println("Executing process "+current.getName()+" with remaining time: " + current.getData());
+                System.out.println("Executing process "+current.getName()+" with remaining time: " + decFor.format(current.getData()));
                 current = current.getNext(); // Move to the next process
             } else {
                 System.out.println("Executing process "+current.getName()+" with remaining time: 0");

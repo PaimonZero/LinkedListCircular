@@ -4,7 +4,6 @@ import model.Validate;
 import view.MyMenu;
 
 public class Executed extends MyMenu{
-    
     CircularLinkedList link = new CircularLinkedList();
     
     public Executed() {
@@ -26,8 +25,8 @@ public class Executed extends MyMenu{
                 for(int i = 0; i < num; i++){
                     System.out.println("-Process " +i+": ");
                     String nodeName = Validate.getString(">Enter name of process: ").toUpperCase();
-                    int data = Validate.getInt(">>Enter executed time: ");
-                    link.insert(data, nodeName);
+                    double data = Validate.getDouble(">>Enter executed time: ");
+                    link.insert((int) data, nodeName);
                 }
                 System.out.println("------------------------------------");
                 System.out.print("New list: ");
@@ -36,7 +35,7 @@ public class Executed extends MyMenu{
                 break;
             case 2:
                 System.out.println(">>..>>..>>Round-Robin<<..<<..<<");
-                int quantum = Validate.getInt(">Enter time quantum: ");
+                double quantum = Validate.getDouble(">Enter time quantum: ");
                 int loop = 1;
                 System.out.println("------------------------------------");
                 do {                    

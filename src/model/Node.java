@@ -7,7 +7,7 @@ package model;
  */
 public class Node {
     private String name;
-    private int data;
+    private double data;
     private Node next;
     
     public String getName() {
@@ -18,11 +18,11 @@ public class Node {
         this.name = name;
     }
 
-    public int getData() {
+    public double getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(double data) {
         this.data = data;
     }
 
@@ -37,12 +37,12 @@ public class Node {
     public Node() {
     }
     
-    public Node(int data) {
+    public Node(double data) {
         this.data = data;
         this.next = null;
     }
     
-    public Node(int data, String name) {
+    public Node(double data, String name) {
         this.data = data;
         this.name = name;
     }

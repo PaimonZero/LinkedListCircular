@@ -1,7 +1,7 @@
 
 package model;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Validate {
     public static Scanner sc = new Scanner(System.in);
@@ -27,6 +27,21 @@ public class Validate {
         while (true);
     }
     
+    public static double getDouble(String inputMsg) {
+        double result;
+        do{
+            try {
+                System.out.print(inputMsg);
+                result = Double.parseDouble(sc.nextLine());
+                if(result > 0) { 
+                    return result;
+                } else { System.err.println("Value must be larger than 0"); }
+            } catch (NumberFormatException e) {
+                System.err.println("Pls enter integer number!! Try again!");
+            }
+        } while (true);
+    }
+    
     public static int getInt(String inputMsg) {
         int result;
         do{
@@ -41,6 +56,7 @@ public class Validate {
             }
         } while (true);
     }
+    
     
     public static String getString(String inputMsg) {
         String result;
