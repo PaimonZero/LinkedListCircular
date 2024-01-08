@@ -1,52 +1,32 @@
 package controller;
 
+import model.Node;
+
 class CircularLinkedList {
     private Node head;
-
+    
+    // Example constructor
     public CircularLinkedList() {
         this.head = null;
     }
     
-    class Node {
-        private String name;
-        private double data;
-        private Node next;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {    
-            this.name = name;
-        }
-
-        public double getData() {
-            return data;
-        }
-
-        public void setData(double data) {
-            this.data = data;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-
-        public Node() {
-        }
-
-        public Node(double data, String name) {
-            this.data = data;
-            this.name = name.toUpperCase();
-        }
-    }
-    
     public boolean isEmpty() {
         return (head == null);
+    }
+
+    public void insert(double data, String name) {
+        Node newNode = new Node(data, name);
+        if (head == null) {     //th ko có node trong list
+            head = newNode;
+            newNode.setNext(head);
+        } else {
+            Node temp = head;
+            while (temp.getNext() != head) {
+                temp = temp.getNext();
+            }
+            temp.setNext(newNode);
+            newNode.setNext(head);
+        }
     }
     
     public int length() {
@@ -62,23 +42,6 @@ class CircularLinkedList {
             return count;
         }
     }
-    
-
-    public void insert(double data, String name) {
-        Node newNode = new Node(data, name);
-        if (head == null) {
-            head = newNode;
-            newNode.setNext(head);
-        } else {
-            Node temp = head;
-            while (temp.getNext() != head) {
-                temp = temp.getNext();
-            }
-            temp.setNext(newNode);
-            newNode.setNext(head);
-        }
-    }
-    
 
     public void roundRobin(double timeQuantum) {
         if (head == null) {
@@ -113,7 +76,7 @@ class CircularLinkedList {
             if (head.getNext() == head) {
                 // Only one node in the list
                 head = null;
-            } else {
+            } else {  //check trường hợp head cần remove
                 Node temp = head;
                 while (temp.getNext() != head) {
                     temp = temp.getNext();
@@ -121,7 +84,7 @@ class CircularLinkedList {
                 temp.setNext(head.getNext());
                 head = head.getNext();
             }
-        } else {
+        } else {    //th bình thường 
             Node temp = head;
             while (temp.getNext() != head && temp.getNext() != nodeToRemove) {
                 temp = temp.getNext();
@@ -145,32 +108,5 @@ class CircularLinkedList {
         } while (temp != head);
         System.out.println(".");
     }
-    
-    public static void main(String[] args) {
-        CircularLinkedList link = new CircularLinkedList();
-        
-        link.insert(15.5, "Nam");
-        link.insert(10.1, "Nam2");
-        link.insert(20.6, "Nam3");
-        link.insert(2.3, "Nam4");
-        
-        
-        double timeQuantum = 2.1;
-        
-        if(timeQuantum <= 0) {
-            System.err.println("Quantum must be > 0! Current quantum: "+timeQuantum);
-        } else {
-            System.out.println(">>..>>..>>Round-Robin<<..<<..<<");
-            System.out.println(">>Time quantum: " + timeQuantum);
-            link.display();
-            int loop = 1;
-            System.out.println("------------------------------------");
-            do {                    
-                System.out.println(">>Loop " +loop);
-                link.roundRobin(timeQuantum);
-                loop++;
-                System.out.println("------------------------------------");
-            } while(link.isEmpty() != true);
-        }
-    }
+
 }
